@@ -1,0 +1,61 @@
+---
+- name: Install webhook-server
+  ansible.builtin.include_role:
+    name: download-install-binary
+  loop: "{{ lookup('dict', webhook_bin, wantlist=True) }}"
+  tags: setup
+
+- name: Create webhook user
+  ansible.builtin.include_role:
+    name: create-os-user
+  vars:
+    groups_to_create: "{{ webhook_group }}"
+    users: "{{ webhook_user }}"
+
+- name: Create webhook data directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ webhook_username }}"
+    group: "{{ webhook_groupname }}"
+  tags: webhook_server, config
+  loop: 
+    - "{{ path_execute_script | dirname }}"
+    - "{{ path_webhook_config | dirname }}"
+    - "{{ webhook_work_dir }}"
+
+- name: Create config files for {{ webhook }}
+  ansible.builtin.template:
+    src: "{{ item.template }}"
+    dest: "{{ item.dest }}"
+    mode: "{{ item.mode }}" 
+    owner: "{{ webhook_username }}"
+    group: "{{ webhook_groupname }}"
+  loop:
+    - { template: webhook-server-service.j2, dest: "{{ systemd_path }}/{{ webhook_service_name }}", mode: 0644 }    
+    - { template: script.sh.j2, dest: "{{ path_execute_script }}", mode: a+x }    
+    - { template: webhook-config.yaml.j2, dest: "{{ path_webhook_config }}", mode: a+x }   
+
+- name: Ensure container's exposed ports firewall state
+  tags: firewall
+  ansible.posix.firewalld:
+    port: "{{ webhook_port }}/tcp"
+    permanent: yes
+    immediate: yes
+    state: enabled
+  when: webhook_port is defined and ansible_os_family == 'RedHat'
+
+- name: Ensure container's exposed ports firewall state
+  tags: firewall
+  community.general.ufw:
+    rule: allow
+    port: "{{ webhook_port }}"
+    proto: tcp
+  when: webhook_port is defined and ansible_os_family == 'Debian'
+
+- name: Ensure webhook {{ webhook }} service is enabled at boot, and systemd is reloaded
+  ansible.builtin.systemd:
+    name: "{{ webhook_service_name }}"
+    enabled: yes
+    state: started
+    daemon_reload: yes

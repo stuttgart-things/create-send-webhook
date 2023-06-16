@@ -1,0 +1,174 @@
+---
+# defaults file for create-send-webhook
+send_to_msteams: false
+send_to_elastic: false
+install_webhook_server: false
+
+ignore_webhook_errors: false
+logo_pic: "https://www.clipartmax.com/png/middle/120-1208387_cereal-guy-interested-by-rober-raik-cereal-guy-meme-png.png"
+failure_pic: "https://anthillonline.com/wp-content/uploads/2020/06/failure.png"
+ms_teams_notification_type: simple
+
+webhook_version: 2.8.0
+systemd_path: /etc/systemd/system
+webhook_service_name: "webhook-{{ webhook }}.service"
+webhook_working_dir: /tmp
+
+webhook_bin:
+  webhook:
+    bin_name: webhook
+    bin_version: "{{ webhook_version }}"
+    source_url: "https://github.com/adnanh/webhook/releases/download/{{ webhook_version }}/webhook-linux-amd64.tar.gz"
+    bin_to_copy: webhook-linux-amd64/webhook
+    bin_dir: /usr/bin/webhook
+    to_remove: webhook-linux-amd64
+    check_bin_version_before_installing: true
+
+webhook_username: webhook
+webhook_groupname: webhook
+
+admin_group: "{{ 'wheel' if ansible_os_family == 'RedHat' else 'sudo' }}" 
+
+webhook_group:
+  - name: "{{ webhook_groupname }}"
+    gid: 4000
+
+webhook_user:
+  - username: "{{ webhook_username }}"
+    name: "{{ webhook_username }} user"
+    groups: ['{{ admin_group }}','{{ webhook_groupname }}']
+    home: "/home/webhook"
+    profile: |
+      alias ll='ls -ahl'
+    enable_ssh_tcp_forwarding: True
+
+quotes:
+  - "Nice Job Bro"
+  - "Excellent"
+  - "Exceptional"
+  - "WOW"
+  - "First Class"
+  - "Way to go"
+  - "Far out"
+  - "Brilliant"
+  - "Impressive"
+  - "Neat"
+  - "Cool"
+  - "Bullseye"
+  - "Great"
+  - "Well Done"
+  - "Professional as usual"
+  - "You Take the Biscuit every time"
+  - "Cracking Job"
+  - "Magnificent"
+  - "Bravo"
+  - "Amazing"
+  - "Triple A"
+  - "Perfection"
+  - "Polished Performance"
+  - "Class Act"
+  - "Unbelievable"
+  - "'I’m your worst nightmare, you uninvited alien scum-sucker! And right now you’re all that stands between me and a planet full of babes – so get ready to bend over and kiss your ass goodbye!' (Duke Nukem)"
+  - "'Guess again, freakshow. I’m coming back to town, and the last thing that’s gonna go through your mind before you die… is my size-13 boot!' (Duke Nukem)"
+  - "'That’s gonna leave a mark!' (Duke Nukem)"
+  - "'They don’t make ’em better than me!' (Duke Nukem)"
+  - "'Hmmm… That’s gonna leave a mark.' (Duke Nukem)"
+  - "'I go where I please, and I please where I go.' (Duke Nukem)"
+  - "'Come get some!' (Duke Nukem)"
+  - "'Hail to The King, baby!' (Duke Nukem)"
+  - "'Babes, bullets, bombs. Damn – I love this job!' (Duke Nukem)"
+  - "'I always said, if there was a way to go, I’d have something to do with women, whips, and oil…' (Duke Nukem)"
+  - "'Yeah, piece of cake!' (Duke Nukem)"
+  - "'Sometimes I even amaze myself!' (Duke Nukem)"
+  - "'I’m not gonna fight you, I’m gonna KICK YOUR ASS!' (Duke Nukem)"
+  - "'Let’s rock!' (Duke Nukem)"
+  - "'My name’s Duke Nukem, and I’m coming to get the rest of you alien bastards!' (Duke Nukem)"
+  - "'Looks like it’s time for me to go postal!' (Duke Nukem)"
+  - "'Suck it down!' (Duke Nukem)"
+  - "'It’s my way or… Hell, it’s my way!' (Duke Nukem)"
+  - "'Nobody steals our chicks… and lives!' (Duke Nukem)"
+  - "'So many babes, so little time.' (Duke Nukem)"
+  - "'Ready for action.' (Duke Nukem)"
+  - "'Damn, I’m good!' (Duke Nukem)"
+  - "'I love the smell of bacon in the morning.' (Duke Nukem)"
+  - "'I’m an ass kicker, not an aviator.' (Duke Nukem)"
+  - "'Firing a gun is a binary choice. Either you pull the trigger or you don’t.' (Max Payne)"
+failure_messages:
+  - "'Never put off until tomorrow what you can do the day after tomorrow.' (Mark Twain)"
+  - "'It could be that your purpose in life is to serve as a warning to others.' (Ashleigh Brilliant)"
+  - "'The road to success is dotted with many tempting parking spaces.' (Will Rogers)"
+  - "'I am so clever that sometimes I don’t understand a single word of what I am saying.' (Oscar Wilde)"
+  - "'If at first you don’t succeed, then skydiving definitely isn’t for you.' (Steven Wright)"
+  - "'The trouble with having an open mind, of course, is that people will insist on coming along and trying to put things in it.' (Terry Pratchett)"
+  - "'When I hear somebody sigh, 'Life is hard', I am always tempted to ask, 'Compared to what'?' (Sydney Harris)"
+  - "'Bad decisions make good stories.' (Ellis Vidler)"
+  - "'Opportunity is missed by most people because it is dressed in overalls and looks like work.' (Thomas Edison)"
+  - "'The elevator to success is out of order. You’ll have to use the stairs, one step at a time.' (Joe Girard)"
+  - "'Think like a proton. Always positive.' (Unknown)"
+  - "'Even a stopped clock is right twice every day. After some years, it can boast of a long series of successes.' (Marie von Ebner-Eschenbach)"
+  - "'Honest criticism is hard to take, particularly from a relative, a friend, an acquaintance, or a stranger.' (Franklin P. Jones)"
+  - "'I didn’t fail the test. I just found 100 ways to do it wrong.' (Benjamin Franklin)"
+  - "'People often say that motivation doesn’t last. Well, neither does bathing — that’s why we recommend it daily.' (Zig Ziglar)"
+  - "'You must learn from the mistakes of others. You can’t possibly live long enough to make them all yourself.' (Sam Levenson)"
+  - "'Even if you are on the right track, you’ll get run over if you just sit there.' (Will Rogers)"
+  - "'Trying is the first step towards failure.' (Homer Simpson)"
+  - "'You tried your best and you failed meserably. The lesson is, never try.' (Homer Simpson)"
+  - "'Operator! Give me the number for 911!' (Homer Simpson)"
+  - "'Well, excuse me for having enormous flaws I don't work on.' (Homer Simpson)"
+  - "'Life knows two miseries; getting what you don’t want and not getting what you want.' (Max Payne)"
+  - "'Throw the rules out the window, odds are you’ll go that way too.' (Max Payne)"
+  - "'Like all the bad things in my life, it started with the death of a woman. I couldn’t save her.' (Max Payne)"
+  - "'The genius of the hole: no matter how long you spend climbing out, you can still fall back down in an instant.' (Max Payne)"
+  - "'Death is inevitable. Our fear of it makes us play safe, blocks out emotion. It’s a losing game. Without passion you are already dead.' (Max Payne)"
+  - "'There are no choices. Nothing but a straight line. The illusion comes afterwards, when you ask “why me?” and “what if?”. When you look back and see the branches, like a pruned bonsai tree, or forked lightning. If you had done something differently, it wouldn’t be you, it would be someone else looking back, asking a different set of questions.' (Max Payne)"
+  - "'The trouble with wanting something is the fear of losing it, or never getting it. The thought makes you weak.' (Max Payne)"
+  - "'As surely as the bullet rips through the victim’s flesh, organ and bone, it shatters the image of the man who pulls the trigger.' (Max Payne)"
+  - "'I had a bomb ticking in my head. No amount of painkillers would disable it.' (Max Payne)"
+  - "'There are things in life you cannot choose: how you feel.' (Max Payne)"
+  - "'There was a blind spot in my head, a bullet-shaped hole where the answers should be.' (Max Payne)"
+  - "'Call it denial. I wanted to dig inside my skull and scrape out the pain.' (Max Payne)"
+farewell:
+  - "'Saying goodbye doesn't mean anything. It's the time we spent together that matters, not how we left it.' (Trey Parker)"
+  - "'There are no goodbyes for us, Charlie. Wherever you are, you will always be in my heart.' (Ben Kingsley as Mahatma Gandhi)"
+  - "'In the event I don't make it back, I want you to know you've been a real friend, R2. My best one, in fact.' (Anthony Daniels as C-3PO)"
+  - "'When you come to the end of the line, with a buddy who is more than a brother and a little less than a wife, getting blind drunk together is really the only way to say farewell.' (Kurt Russell as Randy Miller)"
+  - "'Adios turd nuggets.' (Joel David Moore as J.P)"
+  - "'No goodbye, you know I don't like goodbyes. See you later!' (Daniel E. Smith as Michael 'Mike' Archibald)"
+  - "'Hit the road, Tripp, and don't ya come back no more, no more, no more, no more. Hit the road, Tripp, and don't ya come back no more.' (Terry Paxton Bradshaw and Kathy Bates as Al and Sue)"
+  - "'Reap it, Murphy, you son of a bitch.' (Emilio Estevez as William H. 'Billy the Kid' Bonney)"
+  - "'Goodbye may seem forever, farewell is like the end. But in my heart's a memory, and there you'll always be.' (Jeanette Nolan as Widow Tweed)"
+  - "'Goodbye, Kemp. I always said you were a dirty little coward. You're a dirty sneaking little rat as well. Goodbye.' (Claude Rains as Dr. Jack Griffin aka The Invisible Man)"
+  - "'I'll never forget you, Hermione. You were the first woman I didn't have to pay for.' (Jack Nicholson as Henry Lloyd Moon)"
+  - "'More than once, I've wished my real life had a delete key.' (Harlan Coben)"
+  - "'I start a lot of songs and throw them out because the energy is not right. It's almost like the file becomes cursed. I have to delete it.' (Grimes)"
+  - "'I would delete Donald Trump. I would delete Hillary Clinton. I would delete the man who was responsible for Brexit.' (Tom Brokaw)" 
+  - "'Anyone I don't know, in my emails or texts, I just delete. If it's someone legitimate, they'll send it again.' (Christine McVie)"
+  - "'Sometimes you have to delete the pictures, delete the number and accept the lesson and move on.' (Nitya Prakash)"
+  - "'When in doubt, delete.' (Nitya Prakash)"
+  
+rename_messages:  
+  - "'Names have power.' (Rick Riordan, The Lightning Thief)"
+  - "'Call him Voldemort, Harry. Always use the proper name for things. Fear of a name increases fear of the thing itself.' (J.K. Rowling, Harry Potter and the Sorcerer's Stone)"
+  - "'I’m not my name. My name is something I wear, like a shirt. It gets worn. I outgrow it, I change it.' (Jerry Spinelli)"
+  - "'Just because you didn't put a name to something did not mean it wasn't there.' (Jodi Picoult, Handle with Care)"
+  - "'Someone once asked. 'What's your best pickup line?' I said, My best pickup line is 'Hi, my name is Hugh Hefner'.' (Hugh Hefner)"
+  - "'A wife should no more take her husband's name than he should hers. My name is my identity and must not be lost.' (Lucy Stone)"
+  - "'The beginning of wisdom is to call things by their right names.'"
+  - "'Better to see the face than to hear the name.'"
+move_messages:
+  - "'Change is not a four letter word… but often your reaction to it is!' (Jeffrey Gitomer)"
+  - "'When I was a kid my parents moved a lot, but I always found them.' (Rodney Dangerfield)"
+  - "'People around the world were moving from one place to another. No one was staying.' (Jonathan Safran Foer, Extremely Loud & Incredibly Close)"
+  - "'Man maintains his balance, poise, and sense of security only as he is moving forward.' (Maxwell Maltz)"
+  - "'Everybody has talent, it’s just a matter of moving around until you’ve discovered what it is.' (George Lucas)"
+  - "'Change is a great and horrible thing, and people love it or hate it at the same time. Without change, however, you just don’t move.' (Marc Jacobs)"
+  - "'All mankind is divided into three classes: those that are immovable, those that are movable, and those that move.' (Benjamin Franklin)"
+  - "'If your world doesn’t allow you to dream, move to one where you can.' (Billy Idol)"
+  - "'We keep moving forward, opening new doors, and doing new things, because we’re curious and curiosity keeps leading us down new paths.' (Walt Disney)"
+  - "'Life is like riding a bicycle. To keep your balance, you must keep moving.' (Albert Einstein)"
+  - "'Stay focused, go after your dreams and keep moving toward your goals.' (LL Cool J)"
+  - "'There’s no time for regrets. You’ve just got to keep moving forward.' (Mike McCready)"
+  - "'Kid, you'll move mountains.' (Dr. Seuss)"
+  - "'Some days it's just about moving and not stopping.' (Christine E. Szymanski)"
+
+

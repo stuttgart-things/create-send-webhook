@@ -1,0 +1,27 @@
+---
+- hosts: "{{ target_host | default('localhost') }}"
+
+  vars:
+    summary_text: "RUNS DIGGA"
+    msteams_url: "https://outlook.office.com/webhook/2f14a9f8-4736-46dd-9c8c-31547ec37180@0a65cb1e-37d5-41ff-980a-647d9d0e4f0b/IncomingWebhook/70f1b61bd3e34f928d664ea1b6ee1c30/dc3a27ed-396c-40b7-a9b2-f1a2b6b44efe"
+    card_title: "Deployment runs well"
+    act_image: "{{ logo_pic }}"
+    act_title: "Deployment running"
+    act_subtitle: "SUCCESS"
+    act_text: "{{ quotes|random }}"
+    link_name: "Release Artifacts"
+    link_url: "http://10.31.102.195:5000/buckets?chosenbucket=deploy-openshift-clusterlogging"
+    ms_teams_notification_type: "{{ 'simple_with_link' }}"
+
+    elasticsearch_url: http://elk-test.labul.sva.de:9200
+    indexname: vsphere-vm
+    ignore_webhook_errors: false
+    webhook:
+      - webhook:
+          time: "{{ ansible_date_time.iso8601_micro }}"
+          HOSTNAME: proxmox
+          FAVFOOD: Kottelette
+          COFFEE: Latte
+
+  roles:
+    - create-send-webhook

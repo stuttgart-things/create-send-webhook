@@ -1,0 +1,9 @@
+---
+- id: {{ webhook }}
+  execute-command: {{ path_execute_script }}
+  command-working-directory: {{ webhook_work_dir }}
+  pass-arguments-to-command:
+{% for argument in arguments %}
+  - source: payload
+    name: message.{{ argument }}
+{% endfor %}
