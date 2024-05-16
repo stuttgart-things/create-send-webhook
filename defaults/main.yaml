@@ -43,6 +43,8 @@ webhook_user:
     enable_ssh_tcp_forwarding: True
 
 quotes:
+  - "'Das habe ich noch nie versucht, also bin ich völlig sicher, dass ich es schaffe.' (Pippi Langstrumpf)"
+  - "'Look at me. I'm cranked on speed most of the time, but I'm productivity personified.' (Trevor Philips, GTA V)"
   - "Nice Job Bro"
   - "Excellent"
   - "Exceptional"
@@ -94,6 +96,10 @@ quotes:
   - "'I’m an ass kicker, not an aviator.' (Duke Nukem)"
   - "'Firing a gun is a binary choice. Either you pull the trigger or you don’t.' (Max Payne)"
 failure_messages:
+  - "'War mir’n Vergnügen, Doc. Sie sind zwar dumm wie ‚ne Hummel, aber Sie meinen es gut!' (The Mentalist)"
+  - "'Ein Experte ist ein Mann, der hinterher genau sagen kann, warum seine Prognose nicht gestimmt hat.' (Winston Churchill)"
+  - "'Die Lösung ist immer einfach, man muss sie nur finden.' (Alexander Solschenizyn)"
+  - "'I made two bad decisions in my life based on fear, and they cost me everything.' (Beth Dutton, Yellowstone)"
   - "'Never put off until tomorrow what you can do the day after tomorrow.' (Mark Twain)"
   - "'It could be that your purpose in life is to serve as a warning to others.' (Ashleigh Brilliant)"
   - "'The road to success is dotted with many tempting parking spaces.' (Will Rogers)"
@@ -128,6 +134,7 @@ failure_messages:
   - "'There was a blind spot in my head, a bullet-shaped hole where the answers should be.' (Max Payne)"
   - "'Call it denial. I wanted to dig inside my skull and scrape out the pain.' (Max Payne)"
 farewell:
+  - "'I’m gonna give you one last chance. You leave now or you never leave.' (Rip Wheeler, Yellowstone)"
   - "'Saying goodbye doesn't mean anything. It's the time we spent together that matters, not how we left it.' (Trey Parker)"
   - "'There are no goodbyes for us, Charlie. Wherever you are, you will always be in my heart.' (Ben Kingsley as Mahatma Gandhi)"
   - "'In the event I don't make it back, I want you to know you've been a real friend, R2. My best one, in fact.' (Anthony Daniels as C-3PO)"
