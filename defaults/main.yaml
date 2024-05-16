@@ -44,7 +44,9 @@ webhook_user:
 
 quotes:
   - "'Das habe ich noch nie versucht, also bin ich völlig sicher, dass ich es schaffe.' (Pippi Langstrumpf)"
+  - "'Es gibt keine Abkürzungen für den Erfolg. Es gibt ausschließlich Wiederholungen, Wiederholungen und nochmals Wiederholungen.' (Arnold Schwarzenegger)"
   - "'Look at me. I'm cranked on speed most of the time, but I'm productivity personified.' (Trevor Philips, GTA V)"
+  - "'Listen, I’m not the nicest guy in the universe, because I’m the smartest, and being nice is something stupid people do to hedge their bets.' (Rick Sanchez, Rick and Morty)"
   - "Nice Job Bro"
   - "Excellent"
   - "Exceptional"
@@ -96,7 +98,7 @@ quotes:
   - "'I’m an ass kicker, not an aviator.' (Duke Nukem)"
   - "'Firing a gun is a binary choice. Either you pull the trigger or you don’t.' (Max Payne)"
 failure_messages:
-  - "'War mir’n Vergnügen, Doc. Sie sind zwar dumm wie ‚ne Hummel, aber Sie meinen es gut!' (The Mentalist)"
+  - "'War mir’n Vergnügen, Doc. Sie sind zwar dumm wie 'ne Hummel, aber Sie meinen es gut!' (The Mentalist)"
   - "'Ein Experte ist ein Mann, der hinterher genau sagen kann, warum seine Prognose nicht gestimmt hat.' (Winston Churchill)"
   - "'Die Lösung ist immer einfach, man muss sie nur finden.' (Alexander Solschenizyn)"
   - "'I made two bad decisions in my life based on fear, and they cost me everything.' (Beth Dutton, Yellowstone)"
