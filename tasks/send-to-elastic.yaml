@@ -3,7 +3,7 @@
   ansible.builtin.uri:
     url: "{{ elasticsearch_url }}/{{ indexname }}/_doc"
     method: POST
-    return_content: yes
+    return_content: true
     body: "{{ lookup('template', './body.json.j2', template_vars=dict(data=item.webhook)) }}"
     body_format: json
     status_code: 201
