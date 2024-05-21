@@ -40,7 +40,7 @@ webhook_user:
     home: "/home/webhook"
     profile: |
       alias ll='ls -ahl'
-    enable_ssh_tcp_forwarding: True
+    enable_ssh_tcp_forwarding: true
 
 quotes:
   - "'Das habe ich noch nie versucht, also bin ich völlig sicher, dass ich es schaffe.' (Pippi Langstrumpf)"
