@@ -10,3 +10,5 @@ rules:
   # don't bother me with this rule
   comments: disable
   comments-indentation: disable
+  braces:
+    max-spaces-inside: 5
