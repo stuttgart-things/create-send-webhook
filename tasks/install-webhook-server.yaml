@@ -18,6 +18,7 @@
     state: directory
     owner: "{{ webhook_username }}"
     group: "{{ webhook_groupname }}"
+    mode: 0644
   tags: webhook_server, config
   loop:
     - "{{ path_execute_script | dirname }}"
