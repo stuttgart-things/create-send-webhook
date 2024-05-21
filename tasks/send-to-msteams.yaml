@@ -4,11 +4,11 @@
     webhook: "{{ msteams_url }}"
     summary: "{{ summary_text }}"
     sections:
-    - title: "{{ card_title }}"
-      activity_image: "{{ act_image }}"
-      activity_title: "{{ act_title }}"
-      activity_subtitle: "{{ act_subtitle if act_subtitle is defined else '' }}"
-      activity_text: "{{ os_facts if os_facts is defined else act_text }}"
+      - title: "{{ card_title }}"
+        activity_image: "{{ act_image }}"
+        activity_title: "{{ act_title }}"
+        activity_subtitle: "{{ act_subtitle if act_subtitle is defined else '' }}"
+        activity_text: "{{ os_facts if os_facts is defined else act_text }}"
   when: ms_teams_notification_type=="simple"
   ignore_errors: true
 
@@ -17,17 +17,17 @@
     webhook: "{{ msteams_url }}"
     summary: "{{ summary_text }}"
     sections:
-    - title: "{{ card_title }}"
-      activity_image: "{{ act_image }}"
-      activity_title: "{{ act_title }}"
-      activity_subtitle: "{{ act_subtitle if act_subtitle is defined else '' }}"
-      activity_text: "{{ os_facts if os_facts is defined else act_text }}"
+      - title: "{{ card_title }}"
+        activity_image: "{{ act_image }}"
+        activity_title: "{{ act_title }}"
+        activity_subtitle: "{{ act_subtitle if act_subtitle is defined else '' }}"
+        activity_text: "{{ os_facts if os_facts is defined else act_text }}"
     actions:
-    - "@type": OpenUri
-      name: "{{ link_name }}"
-      targets:
-      - os: default
-        uri: "{{ link_url }}"
+      - "@type": OpenUri
+        name: "{{ link_name }}"
+        targets:
+          - os: default
+            uri: "{{ link_url }}"
   when: ms_teams_notification_type=="simple_with_link"
   ignore_errors: true
 
@@ -36,21 +36,21 @@
     webhook: "{{ msteams_url }}"
     summary: "{{ summary_text }}"
     sections:
-    - title: "{{ card_title }}"
-      activity_image: "{{ act_image }}"
-      activity_title: "{{ act_title }}"
-      activity_subtitle: "{{ act_subtitle }}"
-      activity_text: "{{ act_text }}"
+      - title: "{{ card_title }}"
+        activity_image: "{{ act_image }}"
+        activity_title: "{{ act_title }}"
+        activity_subtitle: "{{ act_subtitle }}"
+        activity_text: "{{ act_text }}"
     actions:
-    - "@type": OpenUri
-      name: "{{ link_name }}"
-      targets:
-      - os: default
-        uri: "{{ link_url }}"
-    - "@type": OpenUri
-      name: "{{ sec_link_name }}"
-      targets:
-      - os: default
-        uri: "{{ sec_link_url }}"
+      - "@type": OpenUri
+        name: "{{ link_name }}"
+        targets:
+          - os: default
+            uri: "{{ link_url }}"
+      - "@type": OpenUri
+        name: "{{ sec_link_name }}"
+        targets:
+          - os: default
+            uri: "{{ sec_link_url }}"
   when: ms_teams_notification_type=="simple_with_multiple_links"
   ignore_errors: true
