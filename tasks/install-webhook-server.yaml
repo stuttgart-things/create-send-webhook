@@ -2,7 +2,7 @@
 - name: Install webhook-server
   ansible.builtin.include_role:
     name: download-install-binary
-  loop: "{{ lookup('dict', webhook_bin, wantlist=True) }}"
+  loop: "{{ lookup('dict', bin, wantlist=True) }}"
   tags: setup
 
 - name: Create webhook user
