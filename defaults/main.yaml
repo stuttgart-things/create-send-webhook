@@ -14,7 +14,7 @@ systemd_path: /etc/systemd/system
 webhook_service_name: "webhook-{{ webhook }}.service"
 webhook_working_dir: /tmp
 
-webhook_bin:
+bin:
   webhook:
     bin_name: webhook
     bin_version: "{{ webhook_version }}"
@@ -31,7 +31,7 @@ admin_group: "{{ 'wheel' if ansible_os_family == 'RedHat' else 'sudo' }}"
 
 webhook_group:
   - name: "{{ webhook_groupname }}"
-    gid: 4000
+    gid: 5000
 
 webhook_user:
   - username: "{{ webhook_username }}"

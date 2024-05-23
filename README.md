@@ -10,7 +10,7 @@ copy the following and paste it on your ansible host to install the roles:
 ```
 cat <<EOF > /tmp/requirements.yaml
 roles:
-- src: git@codehub.sva.de:Lab/stuttgart-things/supporting-roles/create-send-webhook.git
+- src: https://github.com/stuttgart-things/create-send-webhook.git
   scm: git
 collections:
 - name: community.general

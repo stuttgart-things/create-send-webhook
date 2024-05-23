@@ -1,5 +1,6 @@
 ---
 - hosts: "{{ target_host | default('localhost') }}"
+  become: true
 
   vars:
     summary_text: "RUNS DIGGA"
