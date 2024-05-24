@@ -9,7 +9,7 @@ logo_pic: "https://www.clipartmax.com/png/middle/120-1208387_cereal-guy-interest
 failure_pic: "https://anthillonline.com/wp-content/uploads/2020/06/failure.png"
 ms_teams_notification_type: simple
 
-webhook_version: 2.8.0
+webhook_version: 2.8.1
 systemd_path: /etc/systemd/system
 webhook_service_name: "webhook-{{ webhook }}.service"
 webhook_working_dir: /tmp
