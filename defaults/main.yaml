@@ -9,12 +9,12 @@ logo_pic: "https://www.clipartmax.com/png/middle/120-1208387_cereal-guy-interest
 failure_pic: "https://anthillonline.com/wp-content/uploads/2020/06/failure.png"
 ms_teams_notification_type: simple
 
-webhook_version: 2.8.0
+webhook_version: 2.8.1
 systemd_path: /etc/systemd/system
 webhook_service_name: "webhook-{{ webhook }}.service"
 webhook_working_dir: /tmp
 
-webhook_bin:
+bin:
   webhook:
     bin_name: webhook
     bin_version: "{{ webhook_version }}"
@@ -27,20 +27,20 @@ webhook_bin:
 webhook_username: webhook
 webhook_groupname: webhook
 
-admin_group: "{{ 'wheel' if ansible_os_family == 'RedHat' else 'sudo' }}" 
+admin_group: "{{ 'wheel' if ansible_os_family == 'RedHat' else 'sudo' }}"
 
 webhook_group:
   - name: "{{ webhook_groupname }}"
-    gid: 4000
+    gid: 5000
 
 webhook_user:
   - username: "{{ webhook_username }}"
     name: "{{ webhook_username }} user"
-    groups: ['{{ admin_group }}','{{ webhook_groupname }}']
+    groups: ['{{ admin_group }}', '{{ webhook_groupname }}']
     home: "/home/webhook"
     profile: |
       alias ll='ls -ahl'
-    enable_ssh_tcp_forwarding: True
+    enable_ssh_tcp_forwarding: true
 
 quotes:
   - "'Das habe ich noch nie versucht, also bin ich völlig sicher, dass ich es schaffe.' (Pippi Langstrumpf)"
@@ -150,12 +150,12 @@ farewell:
   - "'I'll never forget you, Hermione. You were the first woman I didn't have to pay for.' (Jack Nicholson as Henry Lloyd Moon)"
   - "'More than once, I've wished my real life had a delete key.' (Harlan Coben)"
   - "'I start a lot of songs and throw them out because the energy is not right. It's almost like the file becomes cursed. I have to delete it.' (Grimes)"
-  - "'I would delete Donald Trump. I would delete Hillary Clinton. I would delete the man who was responsible for Brexit.' (Tom Brokaw)" 
+  - "'I would delete Donald Trump. I would delete Hillary Clinton. I would delete the man who was responsible for Brexit.' (Tom Brokaw)"
   - "'Anyone I don't know, in my emails or texts, I just delete. If it's someone legitimate, they'll send it again.' (Christine McVie)"
   - "'Sometimes you have to delete the pictures, delete the number and accept the lesson and move on.' (Nitya Prakash)"
   - "'When in doubt, delete.' (Nitya Prakash)"
-  
-rename_messages:  
+
+rename_messages:
   - "'Nicknames stick to people, and the most ridiculous are the most adhesive.' (Thomas C. Haliburton)"
   - "'Music can name the unnameable and communicate the unknowable.' (Leonard Bernstein)"
   - "'The beginning of wisdom is to call things by their proper name.' (Confucius)"
@@ -185,5 +185,3 @@ move_messages:
   - "'There’s no time for regrets. You’ve just got to keep moving forward.' (Mike McCready)"
   - "'Kid, you'll move mountains.' (Dr. Seuss)"
   - "'Some days it's just about moving and not stopping.' (Christine E. Szymanski)"
-
-

@@ -1,12 +1,12 @@
 ---
 - name: Send notification to MS Teams
-  include_tasks: send-to-msteams.yaml
+  ansible.builtin.include_tasks: send-to-msteams.yaml
   when: send_to_msteams|bool
 
 - name: Send notification to Elasticsearch
-  include_tasks: send-to-elastic.yaml
+  ansible.builtin.include_tasks: send-to-elastic.yaml
   when: send_to_elastic|bool
 
 - name: Install webhook-server
-  include_tasks: install-webhook-server.yaml
+  ansible.builtin.include_tasks: install-webhook-server.yaml
   when: install_webhook_server|bool

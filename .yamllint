@@ -1,0 +1,14 @@
+---
+extends: default
+
+rules:
+  # 80 chars should be enough, but don't fail if a line is longer
+  line-length:
+    max: 110
+    level: warning
+
+  # don't bother me with this rule
+  comments: disable
+  comments-indentation: disable
+  braces:
+    max-spaces-inside: 5
