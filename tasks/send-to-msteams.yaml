@@ -1,6 +1,6 @@
 ---
 - name: Send simple notification to MS Teams
-  community.general.notification.office_365_connector_card:
+  community.general.office_365_connector_card:
     webhook: "{{ msteams_url }}"
     summary: "{{ summary_text }}"
     sections:
@@ -13,7 +13,7 @@
   ignore_errors: true
 
 - name: Send simple notification w/ one link to MS Teams
-  community.general.notification.office_365_connector_card:
+  community.general.office_365_connector_card:
     webhook: "{{ msteams_url }}"
     summary: "{{ summary_text }}"
     sections:
@@ -32,7 +32,7 @@
   ignore_errors: true
 
 - name: Send simple notification w/ multiple links to MS Teams
-  community.general.notification.office_365_connector_card:
+  community.general.office_365_connector_card:
     webhook: "{{ msteams_url }}"
     summary: "{{ summary_text }}"
     sections:
