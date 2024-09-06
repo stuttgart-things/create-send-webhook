@@ -2,7 +2,20 @@
 # defaults file for create-send-webhook
 send_to_msteams: false
 send_to_elastic: false
+send_to_homerun: false
 install_webhook_server: false
+
+title: "Testnachricht"
+message: "Das ist eine Testnachricht"
+severity: "Info"
+author: "Max Mustermann"
+timestamp: "{{ ansible_date_time.date }} {{ ansible_date_time.hour }}:{{ ansible_date_time.minute }}:{{ ansible_date_time.second }}"
+system: "Testsystem"
+technologyTags: "Test"
+assigneeAddress: ""
+assigneeName: "Max Mustermann"
+artifacts: "https://www.google.com"
+url: "https://www.google.com"
 
 ignore_webhook_errors: false
 logo_pic: "https://www.clipartmax.com/png/middle/120-1208387_cereal-guy-interested-by-rober-raik-cereal-guy-meme-png.png"
