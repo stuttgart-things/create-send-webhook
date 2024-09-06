@@ -10,3 +10,7 @@
 - name: Install webhook-server
   ansible.builtin.include_tasks: install-webhook-server.yaml
   when: install_webhook_server|bool
+
+- name: Send notification to Homerun
+  ansible.builtin.include_tasks: send-to-homerun.yaml
+  when: send_to_homerun|bool
